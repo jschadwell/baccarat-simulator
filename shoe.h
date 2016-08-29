@@ -15,17 +15,18 @@ using namespace std;
 
 class Shoe {
 public:
-	Shoe(const int numberOfDecks);
+    static PlayingCard Cut_Card;
 
-	void shuffle(const int numberOfShuffles);
-	PlayingCard& deal();
-	void discard();
+    Shoe(const int numberOfDecks);
+
+    void shuffle(const int numberOfShuffles);
+    PlayingCard& deal();
+    void discard(int numberToDiscard = 1);
+    void insertCutCard(const int cutCardPosition);
 
 private:
-	vector<PlayingCard> _shoe;
-	vector<PlayingCard>::iterator _pos;
+    vector<PlayingCard> _shoe;
+    vector<PlayingCard>::iterator _pos;
 };
-
-
 
 #endif /* SHOE_H_ */

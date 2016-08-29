@@ -25,7 +25,7 @@ void Hand::accumulate(int value)
 
 int Hand::getTotal() const
 {
-	return _total;
+    return _total;
 }
 
 void Hand::draw(Shoe* shoe)

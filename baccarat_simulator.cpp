@@ -14,24 +14,24 @@
 using namespace std;
 
 BaccaratSimulator::BaccaratSimulator(int cycles, int shuffles) :
-	_cycles(cycles),
-	_shuffles(shuffles),
-	_cyclesComplete(0),
-	_shoe(numberOfDecks),
-	_totalHands(0),
-	_playerWins(0),
-	_bankerWins(0),
-	_ties(0),
-	_handsLeft(0) {}
+	        _cycles(cycles),
+	        _shuffles(shuffles),
+	        _cyclesComplete(0),
+	        _shoe(numberOfDecks),
+	        _totalHands(0),
+	        _playerWins(0),
+	        _bankerWins(0),
+	        _ties(0),
+	        _handsLeft(0) {}
 
 BaccaratSimulator::~BaccaratSimulator() {}
 
 void BaccaratSimulator::run()
 {
-	while (_cyclesComplete < _cycles) {
-		playCycle();
-		_cyclesComplete++;
-	}
+    while (_cyclesComplete < _cycles) {
+        playCycle();
+        _cyclesComplete++;
+    }
 }
 
 void BaccaratSimulator::playCycle()

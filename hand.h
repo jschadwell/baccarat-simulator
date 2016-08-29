@@ -16,23 +16,23 @@
 class HitStrategy;
 class Hand {
 public:
-	Hand(HitStrategy* hitStrategy);
+    Hand(HitStrategy* hitStrategy);
 
-	int getTotal() const;
-	void draw(Shoe* shoe);
-	int getCardsDrawn() const;
-	int getLastCardValue() const;
-	bool wasCutCardDrawn();
-	bool shouldHit(Hand& player, Hand& banker);
+    int getTotal() const;
+    void draw(Shoe* shoe);
+    int getCardsDrawn() const;
+    int getLastCardValue() const;
+    bool wasCutCardDrawn();
+    bool shouldHit(Hand& player, Hand& banker);
 
 private:
-	std::unique_ptr<HitStrategy> _hitStrategy;
-	int _total;
-	int _cardsDrawn;
-	int _lastCardValue;
-	bool _isCutCard;
+    std::unique_ptr<HitStrategy> _hitStrategy;
+    int _total;
+    int _cardsDrawn;
+    int _lastCardValue;
+    bool _isCutCard;
 
-	void accumulate(int value);
+    void accumulate(int value);
 };
 
 #endif /* HAND_H_ */

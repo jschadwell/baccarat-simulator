@@ -12,14 +12,14 @@
 
 class PlayingCard {
 public:
-	PlayingCard(std::string id, int value): _id(id), _value(value) {}
+    PlayingCard(std::string id, int value): _id(id), _value(value) {}
 
-	const std::string& getId() const { return _id; }
-	int getValue() const { return _value; }
+    const std::string& getId() const { return _id; }
+    int getValue() const { return _value; }
 
 private:
-	std::string _id;
-	int _value;
+    std::string _id;
+    int _value;
 };
 
 

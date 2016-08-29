@@ -12,8 +12,6 @@
 #include "shoe.h"
 #include <vector>
 
-using namespace std;
-
 class Hand {
 public:
 	Hand(/* Hit strategy set here */);
@@ -23,7 +21,7 @@ public:
 	void discard();
 
 private:
-	vector<PlayingCard> _hand;
+	std::vector<PlayingCard> _hand;
 	int _total;
 };
 

@@ -10,8 +10,6 @@
 
 #include "shoe.h"
 
-using namespace std;
-
 class BaccaratSimulator {
 	public:
 	BaccaratSimulator(int cycles, int shuffles);
@@ -27,7 +25,7 @@ private:
 	const int cutCardPosition = 16;
 	Shoe _shoe;
 
-	void resetShoe();
+	void playCycle();
 };
 
 

@@ -11,8 +11,6 @@
 #include "playing_card.h"
 #include <vector>
 
-using namespace std;
-
 class Shoe {
 public:
     static PlayingCard Cut_Card;
@@ -25,8 +23,8 @@ public:
     void insertCutCard(const int cutCardPosition);
 
 private:
-    vector<PlayingCard> _shoe;
-    vector<PlayingCard>::iterator _pos;
+    std::vector<PlayingCard> _shoe;
+    std::vector<PlayingCard>::iterator _pos;
 };
 
 #endif /* SHOE_H_ */

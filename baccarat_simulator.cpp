@@ -21,15 +21,17 @@ BaccaratSimulator::~BaccaratSimulator() {}
 void BaccaratSimulator::run()
 {
 	while (_cyclesComplete < _cycles) {
-		resetShoe();
+		playCycle();
 		_cyclesComplete++;
-		cout << "Cycles complete = " << _cyclesComplete << endl;
+		std::cout << "Cycles complete = " << _cyclesComplete << std::endl;
 	}
 }
 
-void BaccaratSimulator::resetShoe()
+void BaccaratSimulator::playCycle()
 {
-	_shoe.shuffle(_shuffles);
-	PlayingCard card = _shoe.deal();
-	_shoe.discard(card.getValue());
+    // Reset shoe
+    _shoe.shuffle(_shuffles);
+    PlayingCard card = _shoe.deal();
+    _shoe.discard(card.getValue());
+    _shoe.insertCutCard(cutCardPosition);
 }

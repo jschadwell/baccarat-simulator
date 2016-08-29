@@ -10,7 +10,6 @@
 #include <boost/program_options.hpp>
 #include "baccarat_simulator.h"
 
-using namespace std;
 namespace po = boost::program_options;
 
 int main(int argc, char* argv[])
@@ -31,20 +30,20 @@ int main(int argc, char* argv[])
 		po::notify(vm);
 
 		if (vm.count("help")) {
-			cout << desc << endl;
+			std::cout << desc << std::endl;
 			return 0;
 		}
 	}
-	catch(exception& e) {
-		cerr << "Error: " << e.what() << endl;
+	catch(std::exception& e) {
+		std::cerr << "Error: " << e.what() << std::endl;
 		return 1;
 	}
 	catch(...) {
-		cerr << "Unknown error" << endl;
+		std::cerr << "Unknown error" << std::endl;
 	}
 
-	cout << "cycles = " << cycles << endl;
-	cout << "shuffles = " << shuffles << endl;
+	std::cout << "cycles = " << cycles << std::endl;
+	std::cout << "shuffles = " << shuffles << std::endl;
 
 	BaccaratSimulator simulator(cycles, shuffles);
 	simulator.run();

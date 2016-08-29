@@ -7,9 +7,11 @@
 
 #include "shoe.h"
 #include <algorithm>
+#include <random>
+#include <iterator>
 
 namespace {
-	vector<PlayingCard> deck = {
+    std::vector<PlayingCard> deck = {
 			PlayingCard("Ah", 1), PlayingCard("2h", 2), PlayingCard("3h", 3),
 			PlayingCard("4h", 4), PlayingCard("5h", 5), PlayingCard("6h", 6),
 			PlayingCard("7h", 7), PlayingCard("8h", 8), PlayingCard("9h", 9),
@@ -40,17 +42,16 @@ PlayingCard Shoe::Cut_Card("CUT_CARD", 0);
 
 Shoe::Shoe(const int numberOfDecks)
 {
-	int i;
-	for (i = 0; i < numberOfDecks; i++) {
+	for (int i = 0; i < numberOfDecks; i++) {
 		_shoe.insert(end(_shoe), begin(deck), end(deck));
 	}
 }
 
 void Shoe::shuffle(const int numberOfShuffles)
 {
-	int i;
-	for (i = 0; i < numberOfShuffles; i++) {
-		random_shuffle(begin(_shoe), end(_shoe));
+    std::mt19937_64 r(static_cast<uint64_t>(time(nullptr)));
+	for (int i = 0; i < numberOfShuffles; i++) {
+	    std::shuffle(begin(_shoe), end(_shoe), r);
 	}
 	_pos = begin(_shoe);
 }

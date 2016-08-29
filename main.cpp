@@ -42,10 +42,23 @@ int main(int argc, char* argv[])
 		std::cerr << "Unknown error" << std::endl;
 	}
 
-	std::cout << "cycles = " << cycles << std::endl;
-	std::cout << "shuffles = " << shuffles << std::endl;
+	if (cycles <= 0) {
+	    std::cerr << "Error: 'cycles' must be greater than zero" << std::endl;
+	}
+
+	if (shuffles <= 0) {
+	    std::cerr << "Error: 'shuffles' must be greater than zero" << std::endl;
+	}
 
 	BaccaratSimulator simulator(cycles, shuffles);
 	simulator.run();
+
+	std::cout << "Baccarat Simulator" << std::endl << std::endl;
+	std::cout << "Cycles through the shoe: " << cycles << std::endl;
+	std::cout << "Shuffles per cycle: " << shuffles << std::endl;
+	std::cout << "Total hands: " << simulator.getTotalHands() << std::endl;
+	std::cout << "Player wins: " << simulator.getPlayerWins() << std::endl;
+	std::cout << "Banker wins: " << simulator.getBankerWins() << std::endl;
+	std::cout << "Ties: " << simulator.getTies() << std::endl;
 }
 

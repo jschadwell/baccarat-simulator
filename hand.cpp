@@ -6,23 +6,38 @@
  */
 
 #include "hand.h"
+#include "hit_strategy.h"
 
-Hand::Hand() : _total(0)
+Hand::Hand(HitStrategy* hitStrategy) : _hitStrategy(hitStrategy), _total(0), _isCutCard(false) {}
+
+void Hand::accumulate(int value)
 {
+    _total += value;
+    _total %= 10;
 }
 
-int Hand::total() const
+int Hand::getTotal() const
 {
 	return _total;
 }
 
-int Hand::numberOfCards() const
+void Hand::draw(Shoe& shoe)
 {
-	return 0;
+    PlayingCard* card;
+    card = &shoe.deal();
+    if (card->getId() == Shoe::Cut_Card.getId()) {
+        card = &shoe.deal();
+        _isCutCard = true;
+    }
+    accumulate(card->getValue());
 }
 
-void Hand::discard()
+bool Hand::wasCutCardDrawn()
 {
-	_hand.clear();
-	_total = 0;
+    return _isCutCard;
+}
+
+bool Hand::shouldHit(const int playerTotal, const int bankerTotal, PlayingCard* playerHitCard)
+{
+    return _hitStrategy->shouldHit(playerTotal, bankerTotal, playerHitCard);
 }

@@ -11,18 +11,24 @@
 #include "playing_card.h"
 #include "shoe.h"
 #include <vector>
+#include <memory>
 
+class HitStrategy;
 class Hand {
 public:
-	Hand(/* Hit strategy set here */);
+	Hand(HitStrategy* hitStrategy);
 
-	int total() const;
-	int numberOfCards() const;
-	void discard();
+	int getTotal() const;
+	void draw(Shoe& shoe);
+	bool wasCutCardDrawn();
+	bool shouldHit(const int playerTotal, const int bankerTotal, PlayingCard* playerHitCard = nullptr);
 
 private:
-	std::vector<PlayingCard> _hand;
+	std::unique_ptr<HitStrategy> _hitStrategy;
 	int _total;
+	bool _isCutCard;
+
+	void accumulate(int value);
 };
 
-#endif /* ABSTRACT_HAND_H_ */
+#endif /* HAND_H_ */

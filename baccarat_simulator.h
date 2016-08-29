@@ -21,11 +21,13 @@ private:
 	int _cycles;
 	int _shuffles;
 	int _cyclesComplete;
+	int _handsLeft;
 	const int numberOfDecks = 8;
 	const int cutCardPosition = 16;
 	Shoe _shoe;
 
 	void playCycle();
+	void playHand();
 };
 
 

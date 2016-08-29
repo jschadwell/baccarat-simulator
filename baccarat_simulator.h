@@ -16,13 +16,21 @@ class BaccaratSimulator {
 	~BaccaratSimulator();
 
 	void run();
+	int getTotalHands() const { return _totalHands; }
+	int getPlayerWins() const { return _playerWins; }
+	int getBankerWins() const { return _bankerWins; }
+	int getTies() const { return _ties; }
 
 private:
 	int _cycles;
 	int _shuffles;
 	int _cyclesComplete;
 	int _handsLeft;
-	const int numberOfDecks = 8;
+	int _totalHands;
+	int _playerWins;
+	int _bankerWins;
+	int _ties;
+	const int numberOfDecks = 1;
 	const int cutCardPosition = 16;
 	Shoe _shoe;
 

@@ -8,6 +8,7 @@
 #include <iostream>
 #include <iterator>
 #include <boost/program_options.hpp>
+#include "baccarat_simulator.h"
 
 using namespace std;
 namespace po = boost::program_options;
@@ -44,5 +45,8 @@ int main(int argc, char* argv[])
 
 	cout << "cycles = " << cycles << endl;
 	cout << "shuffles = " << shuffles << endl;
+
+	BaccaratSimulator simulator(cycles, shuffles);
+	simulator.run();
 }
 

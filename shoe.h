@@ -25,6 +25,7 @@ public:
 private:
     std::vector<PlayingCard> _shoe;
     std::vector<PlayingCard>::iterator _pos;
+    int _currentPosition;
 };
 
 #endif /* SHOE_H_ */

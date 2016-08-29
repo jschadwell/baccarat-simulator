@@ -53,13 +53,12 @@ void Shoe::shuffle(const int numberOfShuffles)
 	for (int i = 0; i < numberOfShuffles; i++) {
 	    std::shuffle(begin(_shoe), end(_shoe), r);
 	}
-	_pos = begin(_shoe);
 }
 
 PlayingCard& Shoe::deal()
 {
     if ((*_pos).getId() == Shoe::Cut_Card.getId()) {
-        _shoe.erase(_pos);
+        _pos = _shoe.erase(_pos);
         return Shoe::Cut_Card;
     } else {
         return *(_pos++);
@@ -77,4 +76,5 @@ void Shoe::insertCutCard(const int cutCardPosition)
 {
     int actualPosition = _shoe.size() - cutCardPosition;
     _shoe.insert(begin(_shoe) + actualPosition, Shoe::Cut_Card);
+    _pos = begin(_shoe);
 }

@@ -15,7 +15,7 @@ class HitStrategy {
 public:
     virtual ~HitStrategy() {}
 
-    virtual bool shouldHit(const int playerTotal, const int bankerTotal, PlayingCard* playerHitCard) = 0;
+    virtual bool shouldHit(Hand& player, Hand& banker) = 0;
 };
 
 

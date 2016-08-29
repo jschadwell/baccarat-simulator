@@ -12,7 +12,7 @@
 
 class PlayerHitStrategy : public HitStrategy {
 public:
-    bool shouldHit(const int playerTotal, const int bankerTotal, PlayingCard* playerHitCard = nullptr) override;
+    bool shouldHit(Hand& player, Hand& banker) override;
 };
 
 #endif /* PLAYER_HIT_STRATEGY_H_ */

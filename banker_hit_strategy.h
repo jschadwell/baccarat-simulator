@@ -12,11 +12,11 @@
 
 class BankerHitStrategy : public HitStrategy {
 public:
-    bool shouldHit(const int playerTotal, const int bankerTotal, PlayingCard* playerHitCard = nullptr) override;
+    bool shouldHit(Hand& player, Hand& banker) override;
 
 private:
     bool ifPlayerStood(const int bankerTotal);
-    bool ifPlayerHit(const int bankerTotal, PlayingCard* playerHitCard);
+    bool ifPlayerHit(const int bankerTotal, const int lastCardDrawn);
 };
 
 #endif /* BANKER_HIT_STRATEGY_H_ */

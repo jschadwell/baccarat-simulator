@@ -7,14 +7,19 @@
 
 #include "banker_hit_strategy.h"
 
-bool BankerHitStrategy::shouldHit(const int playerTotal, const int bankerTotal, PlayingCard* playerHitCard)
+bool BankerHitStrategy::shouldHit(Hand& player, Hand& banker)
 {
+    auto playerTotal = player.getTotal();
+    auto bankerTotal = banker.getTotal();
+    auto cardsDrawn = player.getCardsDrawn();
+    auto lastCardValue = player.getLastCardValue();
+
     if (playerTotal >= 8 || bankerTotal >= 8) {
         return false;
-    } else if (playerHitCard == nullptr) {
+    } else if (cardsDrawn > 2) {
         return ifPlayerStood(bankerTotal);
     } else {
-        return ifPlayerHit(bankerTotal, playerHitCard);
+        return ifPlayerHit(bankerTotal, lastCardValue);
     }
 }
 
@@ -27,36 +32,35 @@ bool BankerHitStrategy::ifPlayerStood(const int bankerTotal)
     }
 }
 
-bool BankerHitStrategy::ifPlayerHit(const int bankerTotal, PlayingCard* playerHitCard)
+bool BankerHitStrategy::ifPlayerHit(const int bankerTotal, const int lastCardValue)
 {
-    auto hitCardValue = playerHitCard->getValue();
     switch (bankerTotal) {
     case 7:
         return false;
 
     case 6:
-        if (hitCardValue == 6 || hitCardValue == 7) {
+        if (lastCardValue == 6 || lastCardValue == 7) {
             return true;
         } else {
             return false;
         }
 
     case 5:
-        if (hitCardValue >= 4 && hitCardValue <= 7) {
+        if (lastCardValue >= 4 && lastCardValue <= 7) {
             return true;
         } else {
             return false;
         }
 
     case 4:
-        if (hitCardValue >= 2 && hitCardValue <= 7) {
+        if (lastCardValue >= 2 && lastCardValue <= 7) {
             return true;
         } else {
             return false;
         }
 
     case 3:
-        if (hitCardValue != 8) {
+        if (lastCardValue != 8) {
             return true;
         } else {
             return false;
